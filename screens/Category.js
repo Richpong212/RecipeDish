@@ -8,16 +8,20 @@ const Category = ({navigation}) => {
     <>
       <CategoryHeader navigation={navigation} /> 
       <ScrollView>
-              <MainCategories />
+              <MainCategories navigation={navigation} />
       </ScrollView>
     </>
   );
 };
 
-const MainCategories = () => (
+const MainCategories = ({navigation}) => (
     <>
      {CategoryData.map((category, index) => (
-    <TouchableOpacity style={styles.container} key={index}>
+    <TouchableOpacity 
+        style={styles.container} 
+        key={index}
+        onPress={() => navigation.navigate('CategoryDetails')}
+    >
        <Image 
          source={{uri: category.image}}
          style={styles.img}
